@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7491ED422AED6F6700E6845E /* Expense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7491ED412AED6F6700E6845E /* Expense.swift */; };
 		74B0E35B2AEC929E00B43286 /* ExpenseTrackerPractice2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B0E35A2AEC929E00B43286 /* ExpenseTrackerPractice2App.swift */; };
 		74B0E35D2AEC929E00B43286 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B0E35C2AEC929E00B43286 /* ContentView.swift */; };
 		74B0E35F2AEC92A000B43286 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74B0E35E2AEC92A000B43286 /* Assets.xcassets */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7491ED412AED6F6700E6845E /* Expense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expense.swift; sourceTree = "<group>"; };
 		74B0E3572AEC929E00B43286 /* ExpenseTrackerPractice2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExpenseTrackerPractice2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		74B0E35A2AEC929E00B43286 /* ExpenseTrackerPractice2App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseTrackerPractice2App.swift; sourceTree = "<group>"; };
 		74B0E35C2AEC929E00B43286 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -32,6 +34,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7491ED3F2AED6F2400E6845E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7491ED412AED6F6700E6845E /* Expense.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7491ED402AED6F3000E6845E /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		74B0E34E2AEC929E00B43286 = {
 			isa = PBXGroup;
 			children = (
@@ -51,6 +68,8 @@
 		74B0E3592AEC929E00B43286 /* ExpenseTrackerPractice2 */ = {
 			isa = PBXGroup;
 			children = (
+				7491ED3F2AED6F2400E6845E /* Model */,
+				7491ED402AED6F3000E6845E /* View */,
 				74B0E35A2AEC929E00B43286 /* ExpenseTrackerPractice2App.swift */,
 				74B0E35C2AEC929E00B43286 /* ContentView.swift */,
 				74B0E35E2AEC92A000B43286 /* Assets.xcassets */,
@@ -137,6 +156,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7491ED422AED6F6700E6845E /* Expense.swift in Sources */,
 				74B0E35D2AEC929E00B43286 /* ContentView.swift in Sources */,
 				74B0E35B2AEC929E00B43286 /* ExpenseTrackerPractice2App.swift in Sources */,
 			);
