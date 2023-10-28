@@ -22,6 +22,11 @@ struct ExpensesView: View {
                 
             }
             .navigationTitle("Expenses")
+            .overlay {
+                if allExpenses.isEmpty || groupedExpenses.isEmpty {
+                    ContentUnavailableView("No Expenses", systemImage: "tray.fill")
+                }
+            }
             /// New Category Add Button
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
@@ -34,6 +39,17 @@ struct ExpensesView: View {
                 }
             }
         }
+        .onChange(of: allExpenses, initial: true) { oldValue, newValue in
+            if groupedExpenses.isEmpty {
+                
+            }
+        }
+    }
+    
+    
+    /// Creating Grouped Expenses (Grouping By Date)
+    func createGroupedExpenses(_ expenses: [Expense]) {
+        
     }
 }
 
