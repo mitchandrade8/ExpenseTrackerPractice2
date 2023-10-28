@@ -9,7 +9,23 @@ import SwiftUI
 
 struct ExpensesView: View {
     var body: some View {
-        Text("Expenses View")
+        NavigationStack {
+            List {
+                
+            }
+            .navigationTitle("Expenses")
+            /// New Category Add Button
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        
+                    } label: {
+                        Image(systemName: "plus.circle.fill")
+                            .font(.title3)
+                    }
+                }
+            }
+        }
     }
 }
 

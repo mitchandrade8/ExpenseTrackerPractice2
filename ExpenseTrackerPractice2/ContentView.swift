@@ -23,7 +23,7 @@ struct ContentView: View {
             CategoriesView()
                 .tag("Categories")
                 .tabItem {
-                    Image(systemName: "")
+                    Image(systemName: "list.clipboard.fill")
                     Text("Categories")
                 }
         }
