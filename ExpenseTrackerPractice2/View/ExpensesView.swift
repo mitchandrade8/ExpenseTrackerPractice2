@@ -16,6 +16,8 @@ struct ExpensesView: View {
     /// Grouped Expenses
     @State private var groupedExpenses: [GroupedExpenses] = []
     
+    @State private var addExpense: Bool = false
+    
     var body: some View {
         NavigationStack {
             List {
@@ -31,7 +33,7 @@ struct ExpensesView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
-                        
+                        addExpense.toggle()
                     } label: {
                         Image(systemName: "plus.circle.fill")
                             .font(.title3)
@@ -43,6 +45,9 @@ struct ExpensesView: View {
             if groupedExpenses.isEmpty {
                 createGroupedExpenses(newValue)
             }
+        }
+        .sheet(isPresented: $addExpense) {
+            AddExpenseView()
         }
     }
     
