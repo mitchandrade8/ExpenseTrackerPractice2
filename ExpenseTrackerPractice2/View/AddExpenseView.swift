@@ -23,6 +23,28 @@ struct AddExpenseView: View {
     var body: some View {
         NavigationStack {
             List {
+                Section("Title") {
+                    TextField("Magic Keyboard", text: $title)
+                }
+                
+                Section("Description") {
+                    TextField("Bought a keyboard at the Apple Store", text: $subTitle)
+                }
+                
+                Section("Amount Spent") {
+                    HStack(spacing: 4) {
+                        Text("$")
+                            .fontWeight(.semibold)
+                        
+                        TextField("0.0", value: $amount, format: .currency(code: "USD"))
+                    }
+                }
+                
+                Section("Date") {
+                    DatePicker("", selection: $date, displayedComponents: [.date])
+                        .datePickerStyle(.graphical)
+                        .labelsHidden()
+                }
                 
             }
             .navigationTitle("Add Expense")
@@ -30,12 +52,23 @@ struct AddExpenseView: View {
                 /// Cancel & Add Button
                 ToolbarItem(placement: .topBarLeading) {
                     Button("Cancel") {
-                        
+                        dismiss()
                     }
+                    .tint(.red)
+                }
+                
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("Add", action: addExpense)
                 }
             }
         }
     }
+    
+    /// Adding Expense to SwiftData
+    func addExpense() {
+        
+    }
+    
 }
 
 #Preview {
