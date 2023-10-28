@@ -6,8 +6,16 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ExpensesView: View {
+    
+    /// Grouped Expenses Properties
+    @Query(sort: [ SortDescriptor(\Expense.date, order: .reverse)], animation: .snappy) private var allExpenses: [Expense]
+    
+    /// Grouped Expenses
+    @State private var groupedExpenses: [GroupedExpenses] = []
+    
     var body: some View {
         NavigationStack {
             List {
