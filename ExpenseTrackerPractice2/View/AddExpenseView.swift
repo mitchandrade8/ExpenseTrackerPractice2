@@ -20,6 +20,9 @@ struct AddExpenseView: View {
     @State private var amount: CGFloat = 0
     @State private var category: Category?
     
+    /// Categories
+    @Query(animation: .snappy) private var allCategories: [Category]
+    
     var body: some View {
         NavigationStack {
             List {
@@ -36,7 +39,8 @@ struct AddExpenseView: View {
                         Text("$")
                             .fontWeight(.semibold)
                         
-                        TextField("0.0", value: $amount, format: .currency(code: "USD"))
+                        TextField("0.0", value: $amount, formatter: formatter)
+                            .keyboardType(.numberPad)
                     }
                 }
                 
@@ -46,6 +50,23 @@ struct AddExpenseView: View {
                         .labelsHidden()
                 }
                 
+                /// Category Picker
+                if !allCategories.isEmpty {
+                    HStack {
+                        Text("Category")
+                        
+                        Spacer()
+                        
+                        Picker("", selection: $category) {
+                            ForEach(allCategories) {
+                                Text($0.categoryName)
+                                    .tag($0)
+                            }
+                        }
+                        .pickerStyle(.menu)
+                        .labelsHidden()
+                    }
+                }
             }
             .navigationTitle("Add Expense")
             .toolbar {
@@ -64,11 +85,20 @@ struct AddExpenseView: View {
         }
     }
     
+    /// Disabling
+    
     /// Adding Expense to SwiftData
     func addExpense() {
         
     }
     
+    /// Decimal Formatter
+    var formatter: NumberFormatter {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.maximumFractionDigits = 2
+        return formatter
+    }
 }
 
 #Preview {
