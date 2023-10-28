@@ -13,5 +13,7 @@ struct ExpenseTrackerPractice2App: App {
         WindowGroup {
             ContentView()
         }
+        .modelContainer(for: [Expense.self, Category.self])
+        /// Setting Up the Container
     }
 }

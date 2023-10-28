@@ -16,10 +16,14 @@ class Expense {
     var amount: Double
     var date: Date
     
-    init(title: String, subTitle: String, amount: Double, date: Date) {
+    /// Expense Cateogry
+    var category: Category?
+    
+    init(title: String, subTitle: String, amount: Double, date: Date, category: Category? = nil) {
         self.title = title
         self.subTitle = subTitle
         self.amount = amount
         self.date = date
+        self.category = category
     }
 }
