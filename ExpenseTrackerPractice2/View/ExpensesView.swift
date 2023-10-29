@@ -74,6 +74,7 @@ struct ExpensesView: View {
         }
         .sheet(isPresented: $addExpense) {
             AddExpenseView()
+                .interactiveDismissDisabled()
         }
     }
     

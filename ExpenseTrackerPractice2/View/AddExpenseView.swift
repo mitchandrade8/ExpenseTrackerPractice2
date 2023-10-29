@@ -62,6 +62,8 @@ struct AddExpenseView: View {
                                 Text($0.categoryName)
                                     .tag($0)
                             }
+                            
+                            Text("None")
                         }
                         .pickerStyle(.menu)
                         .labelsHidden()
@@ -69,6 +71,7 @@ struct AddExpenseView: View {
                 }
             }
             .navigationTitle("Add Expense")
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 /// Cancel & Add Button
                 ToolbarItem(placement: .topBarLeading) {
