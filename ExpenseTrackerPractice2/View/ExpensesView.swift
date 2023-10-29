@@ -25,6 +25,7 @@ struct ExpensesView: View {
                     Section(group.groupTitle) {
                         ForEach(group.expenses) { expense in
                             /// Card View
+                            ExpenseCardView(expense: expense)
                         }
                     }
                 }
