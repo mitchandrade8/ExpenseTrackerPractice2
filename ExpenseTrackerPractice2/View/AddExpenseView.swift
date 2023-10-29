@@ -80,16 +80,23 @@ struct AddExpenseView: View {
                 
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Add", action: addExpense)
+                        .disabled(isAddButtonDisabled)
                 }
             }
         }
     }
     
     /// Disabling
+    var isAddButtonDisabled: Bool {
+        return title.isEmpty || subTitle.isEmpty || amount == .zero
+    }
     
     /// Adding Expense to SwiftData
     func addExpense() {
-        
+        let expense = Expense(title: title, subTitle: subTitle, amount: amount, date: date, category: category)
+        context.insert(expense)
+        /// Closing View, Once the Data has been Added Successfully!
+        dismiss()
     }
     
     /// Decimal Formatter

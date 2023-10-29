@@ -21,7 +21,13 @@ struct ExpensesView: View {
     var body: some View {
         NavigationStack {
             List {
-                
+                ForEach(groupedExpenses) { group in
+                    Section(group.groupTitle) {
+                        ForEach(group.expenses) { expense in
+                            /// Card View
+                        }
+                    }
+                }
             }
             .navigationTitle("Expenses")
             .overlay {
