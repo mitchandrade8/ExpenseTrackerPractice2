@@ -18,7 +18,10 @@ struct ExpensesView: View {
     @Environment(\.modelContext) private var context
     
     /// Grouped Expenses
+    /// This will also be used for filtering purpose
     @State private var groupedExpenses: [GroupedExpenses] = []
+    
+    @State private var originalGroupedExpenses: [GroupedExpenses] = []
     
     @State private var addExpense: Bool = false
     
@@ -74,6 +77,13 @@ struct ExpensesView: View {
                 }
             }
         }
+        .onChange(of: searchText, initial: false) { oldValue, newValue in
+            if !newValue.isEmpty {
+                filterExpenses(newValue)
+            } else {
+                groupedExpenses = originalGroupedExpenses
+            }
+        }
         .onChange(of: allExpenses, initial: true) { oldValue, newValue in
             if newValue.count > oldValue.count || groupedExpenses.isEmpty || currentTab == "Categories" {
                 createGroupedExpenses(newValue)
@@ -85,6 +95,23 @@ struct ExpensesView: View {
         }
     }
     
+    /// Filtering Expenses
+    func filterExpenses(_ text: String) {
+        Task.detached(priority: .high) {
+            let query = text.lowercased()
+            let filteredExpenses = originalGroupedExpenses.compactMap { group -> GroupedExpenses? in
+                let expenses = group.expenses.filter({ $0.title.lowercased().contains(query) })
+                if expenses.isEmpty {
+                    return nil
+                }
+                return .init(date: group.date, expenses: expenses)
+            }
+            
+            await MainActor.run {
+                groupedExpenses = filteredExpenses
+            }
+        }
+    }
     
     /// Creating Grouped Expenses (Grouping By Date)
     func createGroupedExpenses(_ expenses: [Expense]) {
@@ -111,6 +138,7 @@ struct ExpensesView: View {
                     let date = Calendar.current.date(from: dict.key) ?? .init()
                     return .init(date: date, expenses: dict.value)
                 })
+                originalGroupedExpenses = groupedExpenses
             }
         }
     }
