@@ -22,6 +22,9 @@ struct ExpensesView: View {
     
     @State private var addExpense: Bool = false
     
+    /// Search Text
+    @State private var searchText: String = ""
+    
     var body: some View {
         NavigationStack {
             List {
@@ -52,6 +55,8 @@ struct ExpensesView: View {
                 }
             }
             .navigationTitle("Expenses")
+            /// Search Bar
+            .searchable(text: $searchText, placement: .navigationBarDrawer, prompt: Text("Search"))
             .overlay {
                 if allExpenses.isEmpty || groupedExpenses.isEmpty {
                     ContentUnavailableView("No Expenses", systemImage: "tray.fill")
